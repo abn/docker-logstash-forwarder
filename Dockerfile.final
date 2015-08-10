@@ -1,0 +1,8 @@
+FROM scratch
+MAINTAINER Arun Neelicattu <arun.neelicattu@gmail.com>
+
+ADD ./logstash-forwarder /logstash-forwarder
+ADD ./logstash-forwarder.conf.example /logstash-forwarder.conf
+
+ENTRYPOINT ["/logstash-forwarder"]
+CMD ["-config", "/logstash-forwarder.conf"]
