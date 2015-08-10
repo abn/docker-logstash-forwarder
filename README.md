@@ -37,6 +37,14 @@ docker run -d --name logstash \
   logstash -e 'input { lumberjack { port => 12345 ssl_certificate => "/lumberjack.crt" ssl_key => "/lumberjack.key" } } output { stdout { } }'
 ```
 
+#### Start httpd container
+
+Note the `local/httpd` is a Fedora 22 container running httpd.
+
+```sh
+docker run -d --name httpd local/httpd
+```
+
 #### Start logstash-forwarder
 
 The following configuration file was used in this example.
@@ -74,12 +82,4 @@ docker run --rm -it \
   --volumes-from httpd \
   --link logstash:logstash \
   alectolytic/logstash-forwarder
-```
-
-#### Start httpd container
-
-Note the `local/httpd` is a Fedora 22 container running httpd.
-
-```sh
-docker run -d --name httpd local/httpd
 ```
